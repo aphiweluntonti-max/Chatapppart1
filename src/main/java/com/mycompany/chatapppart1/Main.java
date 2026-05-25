@@ -11,7 +11,7 @@ import java.util.Scanner;
  * @author Student
  */
 public class Main {
-   public static boolean main(String[]args) {
+   public static void main(String[] args) {
        
        //Scanner allows the user to enter information
         Scanner input = new Scanner (System.in);
@@ -60,11 +60,53 @@ public class Main {
        System.out.println(loginMessage);
        
        //----Messaging(only if logged in)----
-  
-           
+       if (loggedIn) {
+               //Is when the user logged in successfully
+                 System.out.println("Welcome to ChatApp.");
+       } else {
+                //print failure and exit
+                System.out.println("Wrong details,sorry can you please try again!");
+       }
+                   boolean running =true;
+                   while(running){
+                       //Display menu options to the user
+                     System.out.println("1) Send Message");
+                     System.out.println("2) Show recently sent message");
+                     System.out.println("3) Quit");
+                     running = false;
+                     int choice = 0; //read user input here
+                     
+                     switch (choice) {
+                         case 1 -> System.out.println("Send message");
+                         case 2 -> System.out.println("Coming soon");
+                         case 3 -> System.out.println("Quit");
+                         default -> System.out.println("Invalid option number, please choose the numbers that are displayed");
+                             
+                             
+                     }
+                   }
+                       
+                   
+         
+                
+        System.out.println("How many messages would you like to send?"); 
+        // i put an input scanner so it could wait for the user's input  
+        int numMessages = input.nextInt(); //read from the scanner
+        
+        input.nextLine();
+        
+        for (int i = 0; i < numMessages;i++) {
+            int messageNumber = i + 1; // Its a message number that humans can read
+            System.out.println("---Message" +messageNumber+ "-----");
+            System.out.println("Enter your text:");
+            //collect all message details inside 
+            String userMessage = input.nextLine();
+            
+            System.out.println("Saved: \"" + userMessage + "\"");
+            
+        }
+     input.close();
        
-       
-    
-    
-
-
+   
+   }
+}
