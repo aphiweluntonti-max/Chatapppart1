@@ -69,7 +69,7 @@ public class Message {
     public void sentMessage() {
         System.out.println("Message #" + this.messageNumber + " has been sent to " + this.recipient);
     }
-
+    //hgdfyxchjv
     // Prints out all the details of this specific message neatly
     public void printMessages() {
         System.out.println("\n--- Message Details ---");

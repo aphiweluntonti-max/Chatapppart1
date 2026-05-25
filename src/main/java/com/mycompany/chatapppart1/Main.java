@@ -67,29 +67,58 @@ public class Main {
                 //print failure and exit
                 System.out.println("Wrong details,sorry can you please try again!");
        }
-                   boolean running =true;
-                   while(running){
-                       //Display menu options to the user
-                     System.out.println("1) Send Message");
-                     System.out.println("2) Show recently sent message");
-                     System.out.println("3) Quit");
-                     running = false;
-                     int choice = 0; //read user input here
+                  
                      
-                     switch (choice) {
-                         case 1 -> System.out.println("Send message");
-                         case 2 -> System.out.println("Coming soon");
-                         case 3 -> System.out.println("Quit");
-                         default -> System.out.println("Invalid option number, please choose the numbers that are displayed");
-                             
-                             
-                     }
-                   }
-                       
-                   
-         
+               boolean running = true;
+               
+    while (running) {
+    // 1. Display menu options to the user
+    System.out.println("\n=== CHATAPP MENU ===");
+    System.out.println("1) Send Message");
+    System.out.println("2) Show recently sent message");
+    System.out.println("3) Quit");
+    System.out.print("Please enter your choice (1-3): ");
+    
+    // 2. FIX: Actually capture what the user types!
+    int choice = input.nextInt(); 
+    
+    // 3. FIX: Clear the invisible "Enter" key press from the scanner buffer
+    input.nextLine(); 
+    
+    // 4. Run the switch evaluation
+    switch (choice) {
+        case 1 -> {
+            System.out.println("\n--- Send Message Process ---");
+            System.out.println("How many messages would you like to send?"); 
+            int numMessages = input.nextInt();
+            input.nextLine(); // Clear buffer again after reading an integer
+            
+            for (int i = 0; i < numMessages; i++) {
+                int messageNumber = i + 1;
+                System.out.println("---Message " + messageNumber + "-----");
                 
-        System.out.println("How many messages would you like to send?"); 
+                System.out.print("Enter recipient number (+27...): ");
+                String recipient = input.nextLine();
+                
+                System.out.print("Enter your text: ");
+                String userMessage = input.nextLine();
+                
+                // Construct and process your message object here
+                Message msg = new Message(messageNumber, recipient, userMessage);
+                msg.printMessages();
+                msg.sentMessage();
+            }
+        }
+        case 2 -> System.out.println("Coming soon...");
+        case 3 -> {
+            System.out.println("Exiting application. Goodbye!");
+            running = false; // Gracefully ends the while loop
+        }
+        default -> System.out.println("Invalid option number, please choose the numbers that are displayed.");
+    }
+}
+                             
+                      System.out.println("How many messages would you like to send?"); 
         // i put an input scanner so it could wait for the user's input  
         int numMessages = input.nextInt(); //read from the scanner
         
@@ -104,9 +133,16 @@ public class Main {
             
             System.out.println("Saved: \"" + userMessage + "\"");
             
-        }
-     input.close();
+        }       
+                     }
+                   }
+                       
+                   
+         
+     
+        
+     
        
    
-   }
-}
+   
+
