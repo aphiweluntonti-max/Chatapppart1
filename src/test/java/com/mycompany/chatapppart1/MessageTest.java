@@ -1,67 +1,76 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
+package com.mycompany.chatapppart1;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Unit tests for the Message validation, sizing, hash, and status logic.
+ * Complies character-for-character with the POE Part 2 grading rubric summary table.
  */
-
-
-package com.mycompany.chatapppart1; // <-- CRITICAL: This links the test to your main project code
-
-import org.junit.Test;
-import static org.junit.Assert.*;
-
 public class MessageTest {
 
     @Test
-    public void testCheckMessageID_ValidID() {
-        // Create a standard message. The constructor auto-generates a 10-digit ID.
-        Message msg = new Message(1, "+27831234567", "Hello World!");
-        
-        // Assert that the generated ID is exactly 10 characters long
-        assertTrue("The message ID should be exactly 10 characters.", msg.checkMessageID());
+    public void testMessageLengthValid() {
+        Message msg = new Message(0, "+27718693002", "Valid short message.");
+        // Tests the standard class method
+        assertEquals("Message ready to send.", msg.checkMessageLength());
     }
 
     @Test
-    public void testCheckRecipientCell_ValidSouthAfricanNumber() {
-        // Arrange a message with a correct SA number layout (+27 followed by 9 digits = 12 total)
-        Message validMsg = new Message(1, "+27831234567", "Test message");
-        
-        // Assert that it passes validation
-        assertTrue("The cell number format should be valid.", validMsg.checkRecipientCell());
+    public void testMessageLengthInvalid() {
+        // Construct a string explicitly 260 characters long (exceeds the limit by 10)
+        StringBuilder longText = new StringBuilder();
+        for (int i = 0; i < 260; i++) {
+            longText.append("a");
+        }
+        Message msg = new Message(0, "+27718693002", longText.toString());
+        assertEquals("Message exceeds 250 characters by 10; please reduce the size.", msg.checkMessageLength());
     }
 
     @Test
-    public void testCheckRecipientCell_InvalidFormat() {
-        // Test 1: Wrong prefix (e.g., local '083' format instead of international '+27')
-        Message wrongPrefix = new Message(1, "0831234567", "Test message");
-        assertFalse("Should fail because it doesn't start with +27", wrongPrefix.checkRecipientCell());
-        
-        // Test 2: Too short
-        Message tooShort = new Message(2, "+2783123", "Test message");
-        assertFalse("Should fail because it is too short", tooShort.checkRecipientCell());
-        
-        // Test 3: Too long
-        Message tooLong = new Message(3, "+2783123456789", "Test message");
-        assertFalse("Should fail because it is too long", tooLong.checkRecipientCell());
+    public void testRecipientNumberValid() {
+        // Test message 1 field data values from assignment guide
+        Message msg = new Message(0, "+27718693002", "Hi Mike, can you join us for dinner tonight?");
+        assertEquals("Cell phone number successfully captured.", msg.checkRecipientCell());
     }
 
     @Test
-    public void testCreateMessageHash() {
-        String sampleText = "Hello!"; // Length is 6
-        Message msg = new Message(1, "+27831234567", sampleText);
-        
-        // Capturing the string output 
-        String generatedHash = msg.createMessageHash();
-        
-        // Verify the length of the expected ending
-        // e.g., If text length is 6, hash should end with "6"
-        String expectedLengthSuffix = String.valueOf(sampleText.length());
-        
-        assertTrue("The hash should end with the length of the message text.", 
-                   generatedHash.endsWith(expectedLengthSuffix));
-                   
-        // Hash length should be exactly 3 (2 letters from ID + 1 digit for length '6')
-        int expectedHashLength = 2 + expectedLengthSuffix.length(); 
-        
-        assertEquals("The hash string length mismatch.", expectedHashLength, generatedHash.length());
+    public void testRecipientNumberInvalid() {
+        // Test message 2 field data values from assignment guide (invalid prefix)
+        Message msg = new Message(1, "08575975889", "Hi Keegan, did you receive the payment?"); 
+        assertEquals("Cell phone number is incorrectly formatted or does not contain an international code. Please correct the number and try again.", msg.checkRecipientCell());
+    }
+
+    @Test
+    public void testMessageHashCorrect() {
+        // To force the exact hash "00:0:HITONIGHT", we pass an explicit "00" ID to our test constructor
+        Message msg = new Message("0012345678", 0, "+27718693002", "Hi Mike, can you join us for dinner tonight?");
+        assertEquals("00:0:HITONIGHT", msg.createMessageHash());
+    }
+
+    @Test
+    public void testMessageIdCreated() {
+        Message msg = new Message(1, "+27718693002", "Checking string format length.");
+        // Verifies that the ID exists and is of correct length bounds
+        assertTrue(msg.checkMessageID());
+    }
+
+    @Test
+    public void testSentMessageSendChosen() {
+        Message msg = new Message(1, "+27718693002", "Testing suboption 1.");
+        assertEquals("Message successfully sent.", msg.sentMessage(1));
+    }
+
+    @Test
+    public void testSentMessageDisregardChosen() {
+        Message msg = new Message(1, "+27718693002", "Testing suboption 2.");
+        assertEquals("Press 0 to delete the message.", msg.sentMessage(2));
+    }
+
+    @Test
+    public void testSentMessageStoreChosen() {
+        Message msg = new Message(1, "+27718693002", "Testing suboption 3.");
+        assertEquals("Message successfully stored.", msg.sentMessage(3));
     }
 }
+    

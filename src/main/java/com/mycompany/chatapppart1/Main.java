@@ -4,6 +4,7 @@
  */
 package com.mycompany.chatapppart1; //Package name may differ depending on your Netbeans  set  up
 
+        
 import java.util.Scanner;
 
 /**
@@ -28,7 +29,7 @@ public class Main {
        System.out.print("Enter a lastname:");
        String lastname = input.nextLine();
                
-       System.out.print("Enter a username:");
+       System.out.print("Enter a username:"); 
        String username = input.nextLine();
        
        System.out.print("Enter a passsword:");
@@ -60,82 +61,77 @@ public class Main {
        System.out.println(loginMessage);
        
        //----Messaging(only if logged in)----
-       if (loggedIn) {
-               //Is when the user logged in successfully
-                 System.out.println("Welcome to ChatApp.");
-       } else {
-                //print failure and exit
-                System.out.println("Wrong details,sorry can you please try again!");
-       }
-                  
-                     
-               boolean running = true;
-               
-    while (running) {
-    // 1. Display menu options to the user
-    System.out.println("\n=== CHATAPP MENU ===");
-    System.out.println("1) Send Message");
-    System.out.println("2) Show recently sent message");
-    System.out.println("3) Quit");
-    System.out.print("Please enter your choice (1-3): ");
+     
     
-    // 2. FIX: Actually capture what the user types!
-    int choice = input.nextInt(); 
-    
-    // 3. FIX: Clear the invisible "Enter" key press from the scanner buffer
-    input.nextLine(); 
-    
-    // 4. Run the switch evaluation
-    switch (choice) {
-        case 1 -> {
-            System.out.println("\n--- Send Message Process ---");
-            System.out.println("How many messages would you like to send?"); 
-            int numMessages = input.nextInt();
-            input.nextLine(); // Clear buffer again after reading an integer
+        
+        if (loggedIn) {
+            System.out.println("Welcome to ChatApp."); // Exact required string
             
-            for (int i = 0; i < numMessages; i++) {
-                int messageNumber = i + 1;
-                System.out.println("---Message " + messageNumber + "-----");
+            boolean running = true;
+            while (running) {
+                System.out.println("\n1) Send Messages");
+                System.out.println("2) Show recently sent messages");
+                System.out.println("3) Quit");
+                System.out.print("Select an option: ");
                 
-                System.out.print("Enter recipient number (+27...): ");
-                String recipient = input.nextLine();
+                int choice = input.nextInt();
+                input.nextLine(); // Clear scanner buffer
                 
-                System.out.print("Enter your text: ");
-                String userMessage = input.nextLine();
-                
-                // Construct and process your message object here
-                Message msg = new Message(messageNumber, recipient, userMessage);
-                msg.printMessages();
-                msg.sentMessage();
+                switch (choice) {
+                    case 1 -> {
+                        System.out.println("How many messages would you like to send?");
+                        int numMessages = input.nextInt();
+                        input.nextLine(); // Clear buffer
+                        
+                        for (int i = 0; i < numMessages; i++) {
+                            int messageNumber = i + 1;
+                            System.out.println("--- Message " + messageNumber + " ---");
+                            
+                            System.out.print("Enter recipient number: ");
+                            String recipient = input.nextLine();
+                            
+                            System.out.print("Enter your message text: ");
+                            String text = input.nextLine();
+                            
+                            // Build tracking instance
+                            Message msg = new Message(messageNumber, recipient, text);
+                            
+                            // Check validations first
+                            System.out.println(msg.checkRecipientCell());
+                            System.out.println(msg.checkMessageLength());
+                            
+                            // Submenu for delivery choices
+                            System.out.println("\nWhat would you like to do with this message?");
+                            System.out.println("1) Send Message");
+                            System.out.println("2) Disregard Message");
+                            System.out.println("3) Store Message to send later");
+                            
+                            int subOption = input.nextInt();
+                            input.nextLine(); // Clear buffer
+                            
+                            String resultText = msg.sentMessage(subOption);
+                            System.out.println(resultText);
+                            
+                            // Print details in specified order
+                            System.out.println("\n--- Final Summary ---");
+                            msg.printMessages();
+                        }
+                    }
+                    case 2 -> System.out.println("Coming Soon.");
+                    case 3 -> {
+                        System.out.println("Exiting application. Goodbye!");
+                        running = false;
+                    }
+                    default -> System.out.println("Invalid choice. Try again.");
+                }
             }
+        } else {
+            System.out.println("Login Failure. Exiting.");
         }
-        case 2 -> System.out.println("Coming soon...");
-        case 3 -> {
-            System.out.println("Exiting application. Goodbye!");
-            running = false; // Gracefully ends the while loop
-        }
-        default -> System.out.println("Invalid option number, please choose the numbers that are displayed.");
+        input.close();
     }
 }
-                             
-                      System.out.println("How many messages would you like to send?"); 
-        // i put an input scanner so it could wait for the user's input  
-        int numMessages = input.nextInt(); //read from the scanner
-        
-        input.nextLine();
-        
-        for (int i = 0; i < numMessages;i++) {
-            int messageNumber = i + 1; // Its a message number that humans can read
-            System.out.println("---Message" +messageNumber+ "-----");
-            System.out.println("Enter your text:");
-            //collect all message details inside 
-            String userMessage = input.nextLine();
-            
-            System.out.println("Saved: \"" + userMessage + "\"");
-            
-        }       
-                     }
-                   }
+                   
                        
                    
          
