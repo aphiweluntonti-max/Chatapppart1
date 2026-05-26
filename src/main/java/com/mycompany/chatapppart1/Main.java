@@ -29,7 +29,7 @@ public class Main {
        System.out.print("Enter a lastname:");
        String lastname = input.nextLine();
                
-       System.out.print("Enter a username:"); 
+       System.out.print("Enter a username:");  
        String username = input.nextLine();
        
        System.out.print("Enter a passsword:");
