@@ -6,8 +6,11 @@ New added menu 4) Stored Messages
 Updated my message.Java class, main.Java class, and messageTest.Java class.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ###MESSAGE.Java###
-added new methods such as displayAllStorage(), displayLongestMessage(), etc....
+Added new methods such as displayAllStorage(), displayLongestMessage(), etc....
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ##MAIN.Java##
 Added new menu feature 4) Stored Messages and added the new sub-menu from a to g for the user.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+##MESSAGETEST.Java##
+Testing out the new methods such as displayAllStorage(), and etc... from message.Java.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
