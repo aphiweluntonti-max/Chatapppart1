@@ -1,0 +1,260 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 130023424 bytes. Error detail: G1 virtual space
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   This process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_windows.cpp:3554), pid=9868, tid=3580
+#
+# JRE version:  (25.0.2+10) (build )
+# Java VM: OpenJDK 64-Bit Server VM (25.0.2+10-LTS, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: com.mycompany.chatapppart1.Main
+
+Host: Intel(R) Celeron(R) N4020 CPU @ 1.10GHz, 2 cores, 7G,  Windows 10 , 64 bit Build 19041 (10.0.19041.5915)
+Time: Wed Jun 10 14:43:59 2026 Pacific Standard Time elapsed time: 0.036377 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000021c29e1bea0):  JavaThread "Unknown thread" [_thread_in_vm, id=3580, stack(0x000000dadab00000,0x000000dadac00000) (1024K)]
+
+Stack: [0x000000dadab00000,0x000000dadac00000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x7a8bc9]  (no source info available)
+V  [jvm.dll+0x77310d]  (no source info available)
+V  [jvm.dll+0x9f55f3]  (no source info available)
+V  [jvm.dll+0x9f7be1]  (no source info available)
+V  [jvm.dll+0x9f82f3]  (no source info available)
+V  [jvm.dll+0x2fce26]  (no source info available)
+V  [jvm.dll+0x7a4df5]  (no source info available)
+V  [jvm.dll+0x798257]  (no source info available)
+V  [jvm.dll+0x3f5248]  (no source info available)
+V  [jvm.dll+0x3fd1b6]  (no source info available)
+V  [jvm.dll+0x3e991e]  (no source info available)
+V  [jvm.dll+0x3e9bd8]  (no source info available)
+V  [jvm.dll+0x3c0c05]  (no source info available)
+V  [jvm.dll+0x3c188e]  (no source info available)
+V  [jvm.dll+0x9bc474]  (no source info available)
+V  [jvm.dll+0x459e72]  (no source info available)
+V  [jvm.dll+0x9a02a2]  (no source info available)
+V  [jvm.dll+0x4fa5c1]  (no source info available)
+V  [jvm.dll+0x4fbeb1]  (no source info available)
+C  [jli.dll+0x53fa]  (no source info available)
+C  [ucrtbase.dll+0x21bb2]  (no source info available)
+C  [KERNEL32.DLL+0x17374]  (no source info available)
+C  [ntdll.dll+0x4cc91]  (no source info available)
+
+Lock stack of current Java thread (top to bottom):
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007ffc9c8ce008, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+Total: 0
+
+Other Threads:
+  0x0000021c2c0f7780 WorkerThread "GC Thread#0"                     [id=8672, stack(0x000000dadad00000,0x000000dadae00000) (1024K)]
+  0x0000021c2c10f7d0 ConcurrentGCThread "G1 Main Marker"            [id=8372, stack(0x000000dadae00000,0x000000dadaf00000) (1024K)]
+  0x0000021c2c1152a0 WorkerThread "G1 Conc#0"                       [id=1124, stack(0x000000dadaf00000,0x000000dadb000000) (1024K)]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffc9bef591a]
+VM state: not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007ffc9c956548] Heap_lock - owner thread: 0x0000021c29e1bea0
+
+Heap address: 0x0000000085800000, size: 1960 MB, Compressed Oops mode: 32-bit
+
+CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 1.
+UseCompressedClassPointers 1, UseCompactObjectHeaders 0
+Narrow klass pointer bits 32, Max shift 3
+Narrow klass base: 0xffffffffffffffff, Narrow klass shift: -1
+Encoding Range: [0xffffffffffffffff - 0x000000007fffffff), (2147483648 bytes)
+Klass Range:    [0x0000000000000000 - 0x0000000000000000), (0 bytes)
+Klass ID Range:  [4294967295 - 0) (1)
+No protection zone.
+
+GC Precious Log:
+ CardTable entry size: 512
+ Card Set container configuration: InlinePtr #cards 5 size 8 Array Of Cards #cards 10 size 36 Howl #buckets 4 coarsen threshold 1843 Howl Bitmap #cards 512 size 80 coarsen threshold 460 Card regions per heap region 1 cards per card region 2048
+
+Heap:
+ garbage-first heap   total reserved 2007040K, committed 0K, used 0K [0x0000000085800000, 0x0000000100000000)
+  region size 1024K, 0 young (0K), 0 survivors (0K)
+
+Heap Regions: E=young(eden), S=young(survivor), O=old, HS=humongous(starts), HC=humongous(continues), CS=collection set, F=free, TAMS=top-at-mark-start, PB=parsable bottom
+
+Card table byte_map: [0x0000021c43b90000,0x0000021c43f70000] _byte_map_base: 0x0000021c43764000
+
+Marking Bits: (CMBitMap*) 0x0000021c2c0f7f10
+ Bits: [0x0000021c43f70000, 0x0000021c45e10000)
+
+GC Heap Usage History (0 events):
+No events
+
+Metaspace Usage History (0 events):
+No events
+
+Dll operation events (1 events):
+Event: 0.013 Loaded shared library C:\Program Files\Apache NetBeans\jdk\bin\java.dll
+
+Deoptimization events (0 events):
+No events
+
+Classes loaded (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+VM Operations (0 events):
+No events
+
+Memory protections (0 events):
+No events
+
+Nmethod flushes (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x00007ff7239f0000 - 0x00007ff7239fe000 	C:\Program Files\Apache NetBeans\jdk\bin\java.exe
+0x00007ffce48f0000 - 0x00007ffce4ae8000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ffce2cd0000 - 0x00007ffce2d92000 	C:\Windows\System32\KERNEL32.DLL
+0x00007ffce20b0000 - 0x00007ffce23a6000 	C:\Windows\System32\KERNELBASE.dll
+0x00007ffce24b0000 - 0x00007ffce25b0000 	C:\Windows\System32\ucrtbase.dll
+0x00007ffcd02b0000 - 0x00007ffcd02c6000 	C:\Program Files\Apache NetBeans\jdk\bin\jli.dll
+0x00007ffce2e50000 - 0x00007ffce2ff1000 	C:\Windows\System32\USER32.dll
+0x00007ffce23b0000 - 0x00007ffce23d2000 	C:\Windows\System32\win32u.dll
+0x00007ffce47b0000 - 0x00007ffce47db000 	C:\Windows\System32\GDI32.dll
+0x00007ffce25b0000 - 0x00007ffce26c9000 	C:\Windows\System32\gdi32full.dll
+0x00007ffce2410000 - 0x00007ffce24ad000 	C:\Windows\System32\msvcp_win.dll
+0x00007ffcdee40000 - 0x00007ffcdee5e000 	C:\Program Files\Apache NetBeans\jdk\bin\VCRUNTIME140.dll
+0x00007ffcd03c0000 - 0x00007ffcd065b000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.6456_none_60b8a6cb71f64256\COMCTL32.dll
+0x00007ffce4180000 - 0x00007ffce421e000 	C:\Windows\System32\msvcrt.dll
+0x00007ffce46e0000 - 0x00007ffce470f000 	C:\Windows\System32\IMM32.DLL
+0x00007ffcdef00000 - 0x00007ffcdef0c000 	C:\Program Files\Apache NetBeans\jdk\bin\vcruntime140_1.dll
+0x00007ffcb9f00000 - 0x00007ffcb9f8d000 	C:\Program Files\Apache NetBeans\jdk\bin\msvcp140.dll
+0x00007ffc9bb20000 - 0x00007ffc9ca46000 	C:\Program Files\Apache NetBeans\jdk\bin\server\jvm.dll
+0x00007ffce36b0000 - 0x00007ffce3761000 	C:\Windows\System32\ADVAPI32.dll
+0x00007ffce4590000 - 0x00007ffce462f000 	C:\Windows\System32\sechost.dll
+0x00007ffce3590000 - 0x00007ffce36b0000 	C:\Windows\System32\RPCRT4.dll
+0x00007ffce23e0000 - 0x00007ffce2407000 	C:\Windows\System32\bcrypt.dll
+0x00007ffce4310000 - 0x00007ffce437b000 	C:\Windows\System32\WS2_32.dll
+0x00007ffce1d30000 - 0x00007ffce1d7b000 	C:\Windows\SYSTEM32\POWRPROF.dll
+0x00007ffcc4170000 - 0x00007ffcc4197000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ffcdb130000 - 0x00007ffcdb13a000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ffce1ca0000 - 0x00007ffce1cb2000 	C:\Windows\SYSTEM32\UMPDC.dll
+0x00007ffcdfdf0000 - 0x00007ffcdfe02000 	C:\Windows\SYSTEM32\kernel.appcore.dll
+0x00007ffcdeeb0000 - 0x00007ffcdeeba000 	C:\Program Files\Apache NetBeans\jdk\bin\jimage.dll
+0x00007ffccb900000 - 0x00007ffccbb01000 	C:\Windows\SYSTEM32\DBGHELP.DLL
+0x00007ffcbe910000 - 0x00007ffcbe944000 	C:\Windows\SYSTEM32\dbgcore.DLL
+0x00007ffce2830000 - 0x00007ffce28b2000 	C:\Windows\System32\bcryptPrimitives.dll
+0x00007ffcd3ba0000 - 0x00007ffcd3bbe000 	C:\Program Files\Apache NetBeans\jdk\bin\java.dll
+0x00007ffce3ff0000 - 0x00007ffce411b000 	C:\Windows\System32\ole32.dll
+0x00007ffce2970000 - 0x00007ffce2cc4000 	C:\Windows\System32\combase.dll
+0x00007ffce3790000 - 0x00007ffce3f00000 	C:\Windows\System32\SHELL32.dll
+
+JVMTI agents: none
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Program Files\Apache NetBeans\jdk\bin;C:\Windows\SYSTEM32;C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.6456_none_60b8a6cb71f64256;C:\Program Files\Apache NetBeans\jdk\bin\server
+
+VM Arguments:
+java_command: com.mycompany.chatapppart1.Main
+java_class_path (initial): C:\Users\Admin\Documents\NetBeansProjects\Chatapppart1\target\classes;C:\Users\Admin\.m2\repository\br\com\caelum\stella\caelum-stella-bean-validation\2.2.1\caelum-stella-bean-validation-2.2.1.jar;C:\Users\Admin\.m2\repository\br\com\caelum\stella\caelum-stella-core\2.2.1\caelum-stella-core-2.2.1.jar;C:\Users\Admin\.m2\repository\javax\validation\validation-api\1.0.0.GA\validation-api-1.0.0.GA.jar;C:\Users\Admin\.m2\repository\net\vidageek\mirror\1.5\mirror-1.5.jar;C:\Users\Admin\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\2.3.2\jakarta.xml.bind-api-2.3.2.jar;C:\Users\Admin\.m2\repository\jakarta\activation\jakarta.activation-api\1.2.1\jakarta.activation-api-1.2.1.jar;C:\Users\Admin\.m2\repository\org\glassfish\jaxb\jaxb-runtime\2.3.2\jaxb-runtime-2.3.2.jar;C:\Users\Admin\.m2\repository\org\glassfish\jaxb\txw2\2.3.2\txw2-2.3.2.jar;C:\Users\Admin\.m2\repository\com\sun\istack\istack-commons-runtime\3.0.8\istack-commons-runtime-3.0.8.jar;C:\Users\Admin\.m2\repository\org\jvnet\staxex\stax-ex\1.8.1\stax-ex-1.8.1.jar;C:\Users\Admin\.m2\repository\com\sun\xml\fastinfoset\FastInfoset\1.2.16\FastInfoset-1.2.16.jar;C:\Users\Admin\.m2\repository\org\json\json\20240303\json-20240303.jar;C:\Users\Admin\.m2\repository\am\ik\json\tiny-json\0.1.2\tiny-json-0.1.2.jar;C:\Users\Admin\.m2\repository\commons-codec\commons-codec\1.11\commons-codec-1.11.jar;C:\Users\Admin\.m2\repository\au\com\dius\pact-jvm-model-v3_2.10\2.2.11\pact-jvm-model-v3_2.10-2.2.11.jar;C:\Users\Admin\.m2\repository\au\com\dius\pact-jvm-model_2.10\2.2.11\pact-jvm-model_2.10-2.2.11.jar;C:\Users\Admin\.m2\repository\net\databinder\unfiltered-netty-server_2.10\0.8.2\unfiltered-netty-server_2.10-0.8.2.jar;C:\Users\Admin\.m2\repository\net\databinder\unfiltered-netty_2.10\0.8.2\unfiltered-netty_2.10-0.8.2.jar;C:\Users\Admin\.m2\repository\net\databinder\unfiltered_2.10\0.8.2\unfiltered_2.10-0.8.2.jar;C:\Users\Admin\.m2\repository\net\databinder\unfiltered-util_2.10\0.8.2\unfiltered-util_2.10-0.8.2.jar;C:\Users\Admin\.m2\repository\au\com\dius\pact-jvm-logging_2.10\2.2.11\pact-jvm-logging_2.10-2.2.11.jar;C:\Users\Admin\.m2\repository\org\scala-lang\scala-reflect\2.10.5\scala-reflect-2.10.5.jar;C:\Users\Admin\.m2\repository\net\databinder\dispatch\dispatch-core_2.10\0.11.1\dispatch-core_2.10-0.11.1.jar;C:\Users\Admin\.m2\repository\com\ning\async-http-client\1.8.8\async-http-client-1.8.8.jar;C:\Users\Admin\.m2\repository\io\netty\netty\3.9.0.Final\netty-3.9.0.Final.jar;C:\Users\Admin\.m2\repository\org\scala-lang\scala-library\2.10.5\scala-library-2.10.5.jar;C:\Users\Admin\.m2\repository\org\codehaus\groovy\groovy-all\2.4.4\groovy-all-2.4.4.jar;C:\Users\Admin\.m2\repository\org\slf4j\slf4j-api\1.7.7\slf4j-api-1.7.7.jar;C:\Users\Admin\.m2\repository\org\json4s\json4s-native_2.10\3.2.11\json4s-native_2.10-3.2.11.jar;C:\Users\Admin\.m2\repository\org\json4s\json4s-core_2.10\3.2.11\json4s-core_2.10-3.2.11.jar;C:\Users\Admin\.m2\repository\org\json4s\json4s-ast_2.10\3.2.11\json4s-ast_2.10-3.2.11.jar;C:\Users\Admin\.m2\repository\com\thoughtworks\paranamer\paranamer\2.6\paranamer-2.6.jar;C:\Users\Admin\.m2\repository\org\scala-lang\scalap\2.10.0\scalap-2.10.0.jar;C:\Users\Admin\.m2\repository\org\scala-lang\scala-compiler\2.10.0\scala-compiler-2.10.0.jar;C:\Users\Admin\.m2\repository\org\json4s\json4s-jackson_2.10\3.2.11\json4s-jackson_2.10-3.2.11.jar;C:\Users\Admin\.m2\repository\com\bladejava\blade-validator\0.0.2\blade-validator-0.0.2.jar;C:\Users\Admin\.m2\repository\com\bladejava\blade-mvc\2.0.1-alpha2\blade-mvc-2.0.1-alpha2.jar;C:\Users\Admin\.m2\repository\com\bladejava\blade-log\0.0.1\blade-log-0.0.1.jar;C:\Users\Admin\.m2\repository\io\netty\netty-codec-http\4.1.11.Final\netty-codec-http-4.1.11.Final.jar;C:\Users\Admin\.m2\repository\io\netty\netty-codec\4.1.11.Final\netty-codec-4.1.11.Final.jar;C:\Users\Admin\.m2\repository\io\netty\netty-handler\4.1.11.Final\netty-handler-4.1.11.Final.jar;C:\Users\Admin\.m2\repository\io\netty\netty-buffer\4.1.11.Final\netty-buffer-4.1.11.Final.jar;C:\Users\Admin\.m2\repository\io\netty\netty-transport\4.1.11.Final\netty-transport-4.1.11.Final.jar;C:\Users\Admin\.m2\repository\io\netty\netty-resolver\4.1.11.Final\netty-resolver-4.1.11.Final.jar;C:\Users\Admin\.m2\repository\org\projectlombok\lombok\1.16.16\lombok-1.16.16.jar;C:\Users\Admin\.m2\repository\com\javax0\jamal\jamal-json\2.8.2\jamal-json-2.8.2.jar;C:\Users\Admin\.m2\repository\com\javax0\jamal\jamal-api\2.8.2\jamal-api-2.8.2.jar;C:\Users\Admin\.m2\repository\com\javax0\jamal\jamal-tools\2.8.2\jamal-tools-2.8.2.jar;C:\Users\Admin\.m2\repository\com\javax0\levenshtein\1.0.0\levenshtein-1.0.0.jar;C:\Users\Admin\.m2\repository\com\javax0\jamal\jamal-engine\2.8.2\jamal-engine-2.8.2.jar;C:\Users\Admin\.m2\repository\com\javax0\jamal\jamal-core\2.8.2\jamal-core-2.8.2.jar;C:\Users\Admin\.m2\repository\com\arpnetworking\metrics\metrics-aggregator-protocol\1.3.0\metrics-aggregator-protocol-1.3.0.jar;C:\Users\Admin\.m2\repository\com\google\protobuf\protobuf-java\4.31.1\protobuf-java-4.31.1.jar;C:\Users\Admin\.m2\repository\com\vertispan\j2cl\gwt-internal-annotations\0.11.0-9336533b6\gwt-internal-annotations-0.11.0-9336533b6.jar;C:\Users\Admin\.m2\repository\com\fathzer\mail-sender\0.0.1\mail-sender-0.0.1.jar;C:\Users\Admin\.m2\repository\com\sun\mail\jakarta.mail\2.0.1\jakarta.mail-2.0.1.jar;C:\Users\Admin\.m2\repository\com\sun\activation\jakarta.activation\2.0.1\jakarta.activation-2.0.1.jar;C:\Users\Admin\.m2\repository\commons-validator\commons-validator\1.5.1\commons-validator-1.5.1.jar;C:\Users\Admin\.m2\repository\commons-beanutils\commons-beanutils\1.9.2\commons-beanutils-1.9.2.jar;C:\Users\Admin\.m2\repository\commons-digester\commons-digester\1.8.1\commons-digester-1.8.1.jar;C:\Users\Admin\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\Admin\.m2\repository\commons-collections\commons-collections\3.2.2\commons-collections-3.2.2.jar;C:\Users\Admin\.m2\repository\com\azure\azure-messaging-eventhubs-checkpointstore-blob\1.21.0-beta.1\azure-messaging-eventhubs-checkpointstore-blob-1.21.0-beta.1.jar;C:\Users\Admin\.m2\repository\com\azure\azure-messaging-eventhubs\5.21.0-beta.1\azure-messaging-eventhubs-5.21.0-beta.1.jar;C:\Users\Admin\.m2\repository\com\azure\azure-core\1.55.2\azure-core-1.55.2.jar;C:\Users\Admin\.m2\repository\com\azure\azure-json\1.4.0\azure-json-1.4.0.jar;C:\Users\Admin\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.17.2\jackson-datatype-jsr310-2.17.2.jar;C:\Users\Admin\.m2\repository\io\projectreactor\reactor-core\3.4.41\reactor-core-3.4.41.jar;C:\Users\Admin\.m2\repository\org\reactivestreams\reactive-streams\1.0.4\reactive-streams-1.0.4.jar;C:\Users\Admin\.m2\repository\com\azure\azure-core-amqp\2.9.15\azure-core-amqp-2.9.15.jar;C:\Users\Admin\.m2\repository\com\microsoft\azure\qpid-proton-j-extensions\1.2.5\qpid-proton-j-extensions-1.2.5.jar;C:\Users\Admin\.m2\repository\org\apache\qpid\proton-j\0.34.1\proton-j-0.34.1.jar;C:\Users\Admin\.m2\repository\com\azure\azure-storage-blob\12.29.0\azure-storage-blob-12.29.0.jar;C:\Users\Admin\.m2\repository\com\azure\azure-xml\1.1.0\azure-xml-1.1.0.jar;C:\Users\Admin\.m2\repository\com\azure\azure-core-http-netty\1.15.6\azure-core-http-netty-1.15.6.jar;C:\Users\Admin\.m2\repository\io\netty\netty-handler-proxy\4.1.112.Final\netty-handler-proxy-4.1.112.Final.jar;C:\Users\Admin\.m2\repository\io\netty\netty-codec-socks\4.1.112.Final\netty-codec-socks-4.1.112.Final.jar;C:\Users\Admin\.m2\repository\io\netty\netty-codec-http2\4.1.112.Final\netty-codec-http2-4.1.112.Final.jar;C:\Users\Admin\.m2\repository\io\netty\netty-transport-native-unix-common\4.1.112.Final\netty-transport-native-unix-common-4.1.112.Final.jar;C:\Users\Admin\.m2\repository\io\netty\netty-transport-native-epoll\4.1.112.Final\netty-transport-native-epoll-4.1.112.Final-linux-x86_64.jar;C:\Users\Admin\.m2\repository\io\netty\netty-transport-classes-epoll\4.1.112.Final\netty-transport-classes-epoll-4.1.112.Final.jar;C:\Users\Admin\.m2\repository\io\netty\netty-transport-native-kqueue\4.1.112.Final\netty-transport-native-kqueue-4.1.112.Final-osx-x86_64.jar;C:\Users\Admin\.m2\repository\io\netty\netty-transport-classes-kqueue\4.1.112.Final\netty-transport-classes-kqueue-4.1.112.Final.jar;C:\Users\Admin\.m2\repository\io\netty\netty-tcnative-boringssl-static\2.0.65.Final\netty-tcnative-boringssl-static-2.0.65.Final.jar;C:\Users\Admin\.m2\repository\io\netty\netty-tcnative-classes\2.0.65.Final\netty-tcnative-classes-2.0.65.Final.jar;C:\Users\Admin\.m2\repository\io\netty\netty-tcnative-boringssl-static\2.0.65.Final\netty-tcnative-boringssl-static-2.0.65.Final-linux-x86_64.jar;C:\Users\Admin\.m2\repository\io\netty\netty-tcnative-boringssl-static\2.0.65.Final\netty-tcnative-boringssl-static-2.0.65.Final-linux-aarch_64.jar;C:\Users\Admin\.m2\repository\io\netty\netty-tcnative-boringssl-static\2.0.65.Final\netty-tcnative-boringssl-static-2.0.65.Final-osx-x86_64.jar;C:\Users\Admin\.m2\repository\io\netty\netty-tcnative-boringssl-static\2.0.65.Final\netty-tcnative-boringssl-static-2.0.65.Final-osx-aarch_64.jar;C:\Users\Admin\.m2\repository\io\netty\netty-tcnative-boringssl-static\2.0.65.Final\netty-tcnative-boringssl-static-2.0.65.Final-windows-x86_64.jar;C:\Users\Admin\.m2\repository\io\projectreactor\netty\reactor-netty-http\1.0.48\reactor-netty-http-1.0.48.jar;C:\Users\Admin\.m2\repository\io\netty\netty-resolver-dns\4.1.112.Final\netty-resolver-dns-4.1.112.Final.jar;C:\Users\Admin\.m2\repository\io\netty\netty-codec-dns\4.1.112.Final\netty-codec-dns-4.1.112.Final.jar;C:\Users\Admin\.m2\repository\io\netty\netty-resolver-dns-native-macos\4.1.112.Final\netty-resolver-dns-native-macos-4.1.112.Final-osx-x86_64.jar;C:\Users\Admin\.m2\repository\io\netty\netty-resolver-dns-classes-macos\4.1.112.Final\netty-resolver-dns-classes-macos-4.1.112.Final.jar;C:\Users\Admin\.m2\repository\io\projectreactor\netty\reactor-netty-core\1.0.48\reactor-netty-core-1.0.48.jar;C:\Users\Admin\.m2\repository\io\netty\netty-common\4.1.112.Final\netty-common-4.1.112.Final.jar;C:\Users\Admin\.m2\repository\com\azure\azure-storage-common\12.28.0\azure-storage-common-12.28.0.jar;C:\Users\Admin\.m2\repository\com\azure\azure-storage-internal-avro\12.14.0\azure-storage-internal-avro-12.14.0.jar;C:\Users\Admin\.m2\repository\br\com\objectos\objectos-css\0.8.0\objectos-css-0.8.0.jar;C:\Users\Admin\.m2\repository\br\com\objectos\objectos-html\0.8.0\objectos-html-0.8.0.jar;C:\Users\Admin\.m2\repository\br\com\objectos\objectos-util\0.7.2\objectos-util-0.7.2.jar;C:\Users\Admin\.m2\repository\br\com\objectos\objectos-lang\0.7.2\objectos-lang-0.7.2.jar;C:\Users\Admin\.m2\repository\com\9ls\telleroo-java-sdk\1.0.6\telleroo-java-sdk-1.0.6.jar;C:\Users\Admin\.m2\repository\joda-time\joda-time\2.10.10\joda-time-2.10.10.jar;C:\Users\Admin\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.12.5\jackson-databind-2.12.5.jar;C:\Users\Admin\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.12.5\jackson-annotations-2.12.5.jar;C:\Users\Admin\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.12.5\jackson-core-2.12.5.jar;C:\Users\Admin\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-joda\2.12.5\jackson-datatype-joda-2.12.5.jar;C:\Users\Admin\.m2\repository\org\apache\httpcomponents\httpclient\4.5.13\httpclient-4.5.13.jar;C:\Users\Admin\.m2\repository\org\apache\httpcomponents\httpcore\4.4.13\httpcore-4.4.13.jar;C:\Users\Admin\.m2\repository\org\apache\httpcomponents\httpmime\4.5.13\httpmime-4.5.13.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 2                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 1                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 2                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+   size_t InitialHeapSize                          = 130023424                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MarkStackSizeMax                         = 536870912                                 {product} {ergonomic}
+   size_t MaxHeapSize                              = 2055208960                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5767168                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 123011072                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122880000                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 2055208960                             {manageable} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags foldmultilines=false
+ #1: stderr all=off uptime,level,tags foldmultilines=false
+
+Release file:
+<release file has not been read>
+Environment Variables:
+JAVA_HOME=C:\Program Files\Apache NetBeans\jdk
+PATH=C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Users\Admin\AppData\Local\Microsoft\WindowsApps;C:\Users\Admin\.dotnet\tools;C:\Users\Admin\AppData\Local\GitHubDesktop\bin;C:\Program Files\Apache NetBeans\bin\
+USERNAME=Admin
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 122 Stepping 8, GenuineIntel
+TMP=C:\Users\Admin\AppData\Local\Temp
+TEMP=C:\Users\Admin\AppData\Local\Temp
+
+
+
+
+Compilation memory statistics disabled.
+
+Periodic native trim disabled
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 10 , 64 bit Build 19041 (10.0.19041.5915)
+OS uptime: 7 days 7:22 hours
+
+CPU: total 2 (initial active 2) (2 cores per cpu, 1 threads per core) family 6 model 122 stepping 8 microcode 0x20, cx8, cmov, fxsr, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, tsc, tscinvbit, aes, erms, clmul, sha, clflush, clflushopt, rdtscp, rdpid
+Processor Information for the first 2 processors :
+  Max Mhz: 1101, Current Mhz: 1101, Mhz Limit: 1101
+
+Memory: 4k page, system-wide physical 7833M (278M free)
+TotalPageFile size 16025M (AvailPageFile size 123M)
+current process WorkingSet (physical memory assigned to process): 11M, peak: 11M
+current process commit charge ("private bytes"): 48M, peak: 172M
+
+vm_info: OpenJDK 64-Bit Server VM (25.0.2+10-LTS) for windows-amd64 JRE (25.0.2+10-LTS), built on 2026-01-20T00:00:00Z with MS VC++ 17.12 (VS2022)
+
+END.
